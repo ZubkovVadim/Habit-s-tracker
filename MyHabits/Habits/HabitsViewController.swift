@@ -7,6 +7,7 @@ class HabitsViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(HabitCollectionViewCell.self, forCellWithReuseIdentifier: cellIDHabits)
         collectionView.register(ProgressCollectionViewCell.self, forCellWithReuseIdentifier: cellIDProgress)
         collectionView.dataSource = self
@@ -19,12 +20,11 @@ class HabitsViewController: UIViewController {
     let cellIDHabits = "CellIDHabits"
     let cellIDProgress = "CellIDProgress"
     let allHabits = HabitsStore.shared
-    let allProgress = HabitsStore.shared.todayProgress
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpCollectionView()
-        viewWillLayoutSubviews()
+        setUpConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -36,20 +36,23 @@ class HabitsViewController: UIViewController {
         view.addSubview(collectionView)
         self.navigationItem.title = "Сегодня"
         navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.backgroundColor =  UIColor.lightGray
-        view.backgroundColor = UIColor.lightGray
-        collectionView.backgroundColor = UIColor.lightGray
+        self.navigationController?.navigationBar.backgroundColor =  UIColor.MyTheme.myWhite
+        view.backgroundColor = UIColor.MyTheme.myWhite
+        collectionView.backgroundColor = UIColor.MyTheme.myWhite
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName:"plus"), style: .done, target: self, action: #selector(addTapped))
         navigationItem.rightBarButtonItem?.tintColor = UIColor.MyTheme.myPurple
         
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        collectionView.frame = CGRect(x: view.safeAreaInsets.left,
-                                      y: view.safeAreaInsets.top,
-                                      width: view.frame.width - view.safeAreaInsets.left - view.safeAreaInsets.right,
-                                      height: view.frame.height - view.safeAreaInsets.top)
+    func setUpConstraints() {
+        
+        let constraints = [
+            collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
     }
     
     @objc func addTapped() {
@@ -86,7 +89,7 @@ extension HabitsViewController: UICollectionViewDataSource {
             let a = HabitsStore.shared.habits.count - indexPath.item - 1
             let habit = HabitsStore.shared.habits[a]
             cell.habit = habit
-            cell.doneButtonReloadData = {[weak self] in
+            cell.doneButtonReloadData = {
                 collectionView.reloadData()
             }
             cell.habitAquired = {
@@ -97,12 +100,15 @@ extension HabitsViewController: UICollectionViewDataSource {
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = HabitDetailsViewController()
-        let a = HabitsStore.shared.habits.count - indexPath.item - 1
-        let habit = HabitsStore.shared.habits[a]
-        vc.habit = habit
-        navigationController?.pushViewController(vc, animated: true)
-        
+        if indexPath.section == 1 {
+            let vc = HabitDetailsViewController()
+            let a = HabitsStore.shared.habits.count - indexPath.item - 1
+            let habit = HabitsStore.shared.habits[a]
+            vc.habit = habit
+            navigationController?.pushViewController(vc, animated: true)
+        } else {
+            return
+        }
     }
 }
 extension HabitsViewController: UICollectionViewDelegateFlowLayout {

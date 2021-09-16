@@ -3,6 +3,7 @@
 import UIKit
 
 class CreateHabitViewController: UIViewController {
+
     let nameHabitLabel: UILabel = {
         let label = UILabel()
         label.text = "НАЗВАНИЕ"
@@ -54,7 +55,11 @@ class CreateHabitViewController: UIViewController {
         return dateTextField
     }()
     
-    let datePicker = UIDatePicker()
+    let datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
     
     let additionalViewForDatePicker: UIView = {
         let view = UIView()
@@ -64,7 +69,7 @@ class CreateHabitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCollectionView()
+        setUpView()
         createDatePicker()
         view.addSubview(dateHabitLabel)
         view.addSubview(nameHabitLabel)
@@ -74,33 +79,22 @@ class CreateHabitViewController: UIViewController {
         view.addSubview(dateTextLabel)
         view.addSubview(additionalViewForDatePicker)
         additionalViewForDatePicker.addSubview(datePicker)
-        setUpConstrains()
+        setUpConstraints()
         
     }
     func createDatePicker() {
         dateTextLabel.textAlignment = .left
-        dateTextLabel.text = "Каждый день в "
-        //        let toolBar = UIToolbar()
-        //        toolBar.sizeToFit()
-        //        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        //        toolBar.setItems([doneBtn], animated: true)
-        //        dateTextField.inputAccessoryView = toolBar
-        //        dateTextField.inputView = datePicker
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        dateTextLabel.text = "Каждый день в \(formatter.string(from: datePicker.date)) "
         datePicker.datePickerMode = .time
         datePicker.timeZone = .current
         datePicker.preferredDatePickerStyle = .wheels
         datePicker.addTarget(self, action: #selector(dateChanged(_:)), for: .valueChanged)
     }
-    //
-    //    @objc func donePressed() {
-    //        let formatter = DateFormatter()
-    //        formatter.dateStyle = .none
-    //        formatter.timeStyle = .full
-    //        dateTextField.text = "Каждый день в \(formatter.string(from: datePicker.date))"
-    //        self.view.endEditing(true)
-    //    }
     
-    func setUpCollectionView () {
+    func setUpView () {
         view.backgroundColor = UIColor.white
         view.addSubview(nameHabitLabel)
         view.addSubview(nameHabitTextField)
@@ -111,7 +105,7 @@ class CreateHabitViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = UIColor.MyTheme.myPurple
     }
     
-    func setUpConstrains() {
+    func setUpConstraints() {
         let constraints = [
             nameHabitLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
             nameHabitLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
@@ -119,6 +113,7 @@ class CreateHabitViewController: UIViewController {
             
             nameHabitTextField.topAnchor.constraint(equalTo: nameHabitLabel.bottomAnchor, constant: 7),
             nameHabitTextField.leadingAnchor.constraint(equalTo: nameHabitLabel.leadingAnchor),
+            nameHabitTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             colorHabitLabel.topAnchor.constraint(equalTo: nameHabitTextField.bottomAnchor, constant: 15),
             colorHabitLabel.leadingAnchor.constraint(equalTo: nameHabitLabel.leadingAnchor),
@@ -140,7 +135,10 @@ class CreateHabitViewController: UIViewController {
             additionalViewForDatePicker.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             additionalViewForDatePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             additionalViewForDatePicker.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-            additionalViewForDatePicker.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor)
+            additionalViewForDatePicker.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            
+            datePicker.centerXAnchor.constraint(equalTo: additionalViewForDatePicker.centerXAnchor)
+            
             
         ]
         NSLayoutConstraint.activate(constraints)
@@ -163,12 +161,11 @@ class CreateHabitViewController: UIViewController {
         dateTextLabel.textAlignment = .left
         let formatter = DateFormatter()
         formatter.dateStyle = .none
-        formatter.timeStyle = .medium
+        formatter.timeStyle = .short
         dateTextLabel.text = "Каждый день в \(formatter.string(from: datePicker.date))"
         
         
         print(value.date)
-        //button.setTitle(
     }
     
     @objc func addColor() {

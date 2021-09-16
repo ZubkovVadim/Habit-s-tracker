@@ -1,9 +1,4 @@
-//
-//  File.swift
-//  MyHabits
-//
-//  Created by Vadim on 09.08.2021.
-//
+
 
 import UIKit
 class AlphaButton: UIButton {

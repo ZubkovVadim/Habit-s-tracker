@@ -1,9 +1,4 @@
-//
-//  HabitCollectionViewCell.swift
-//  MyHabits
-//
-//  Created by Vadim on 02.08.2021.
-//
+
 
 import UIKit
 
@@ -27,7 +22,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     
     var titleLabel: UILabel = {
         var titleLabel = UILabel()
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 0
         titleLabel.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         return titleLabel
@@ -70,7 +65,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         
         doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
 
-        setUpConstrains()
+        setUpConstraints()
     }
     
     required init?(coder: NSCoder) {
@@ -80,7 +75,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
 
 
 extension HabitCollectionViewCell {
-    func setUpConstrains() {
+    func setUpConstraints() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(counterLabel)
         contentView.addSubview(dateLabel)
@@ -94,6 +89,7 @@ extension HabitCollectionViewCell {
         let constraints = [
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            titleLabel.trailingAnchor.constraint(equalTo: doneButton.leadingAnchor, constant: -8),
             
             dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
             dateLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
@@ -104,7 +100,7 @@ extension HabitCollectionViewCell {
             
             doneButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             doneButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            doneButton.heightAnchor.constraint(equalToConstant: 30),
+            doneButton.heightAnchor.constraint(equalToConstant: 36),
             doneButton.widthAnchor.constraint(equalTo: doneButton.heightAnchor)
             
         ]

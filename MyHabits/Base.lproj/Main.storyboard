@@ -15,6 +15,7 @@
                 <navigationController id="Gy9-jd-bpe" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Привычки" image="rectangle.grid.1x2.fill" catalog="system" id="qAx-zD-eZj"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ebY-Xm-1Ua">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -43,7 +44,7 @@
         <!--Habit Details View Controller-->
         <scene sceneID="GZv-3O-sdX">
             <objects>
-                <viewController id="PjV-P7-5Fv" customClass="HabitDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HabitDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="PjV-P7-5Fv" customClass="HabitDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XTL-wz-XkL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +59,7 @@
         <!--Edit Habit View Controller-->
         <scene sceneID="c9V-k0-WRe">
             <objects>
-                <viewController id="91c-4R-1ce" customClass="EditHabitViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditHabitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="91c-4R-1ce" customClass="EditHabitViewController" customModule="MyHabits" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uMp-pb-hQX">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,6 +93,7 @@
                 <navigationController id="ekx-la-z4Z" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Информация" image="info.circle.fill" catalog="system" id="xTg-dR-ArV"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="5sY-Py-LDd">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>

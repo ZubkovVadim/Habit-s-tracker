@@ -6,7 +6,7 @@ class EditHabitViewController: UIViewController {
     var deleteHandler:(() -> Void)?
     var habit: Habit? {
         didSet {
-            nameHabitTextField.text = habit?.name ?? "1"
+            nameHabitTextField.text = habit?.name ?? "Нет имени"
             buttonColor.backgroundColor = habit?.color
             datePicker.date = habit!.date
         }
@@ -61,7 +61,11 @@ class EditHabitViewController: UIViewController {
         return dateTextField
     }()
     
-    var datePicker = UIDatePicker()
+    let datePicker: UIDatePicker = {
+        let picker = UIDatePicker()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        return picker
+    }()
     
     let additionalViewForDatePicker: UIView = {
         let view = UIView()
@@ -81,7 +85,7 @@ class EditHabitViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpCollectionView()
+        setUpView()
         createDatePicker()
         view.addSubview(dateHabitLabel)
         view.addSubview(nameHabitLabel)
@@ -90,12 +94,12 @@ class EditHabitViewController: UIViewController {
         view.addSubview(colorHabitLabel)
         view.addSubview(dateTextLabel)
         view.addSubview(deleteButton)
-        nameHabitTextField.text = habit?.name ?? "1"
+        nameHabitTextField.text = habit?.name ?? "Нет имени"
         buttonColor.backgroundColor = habit?.color
         datePicker.date = habit!.date
         view.addSubview(additionalViewForDatePicker)
         additionalViewForDatePicker.addSubview(datePicker)
-        setUpConstrains()
+        setUpConstraints()
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -105,18 +109,14 @@ class EditHabitViewController: UIViewController {
     func reloadData2() {
         habit?.color = buttonColor.backgroundColor ?? .white
         habit?.date = datePicker.date
-        habit?.name = nameHabitTextField.text ?? ""
         
     }
     func createDatePicker() {
         dateTextLabel.textAlignment = .left
-        dateTextLabel.text = "Каждый день в "
-        //        let toolBar = UIToolbar()
-        //        toolBar.sizeToFit()
-        //        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-        //        toolBar.setItems([doneBtn], animated: true)
-        //        dateTextField.inputAccessoryView = toolBar
-        //        dateTextField.inputView = datePicker
+        let formatter = DateFormatter()
+        formatter.dateStyle = .none
+        formatter.timeStyle = .short
+        dateTextLabel.text = "Каждый день в \(formatter.string(from: datePicker.date))"
         datePicker.datePickerMode = .time
         datePicker.timeZone = .current
         datePicker.preferredDatePickerStyle = .wheels
@@ -131,7 +131,7 @@ class EditHabitViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func setUpCollectionView () {
+    func setUpView () {
         view.backgroundColor = UIColor.white
         view.addSubview(nameHabitLabel)
         view.addSubview(nameHabitTextField)
@@ -142,7 +142,7 @@ class EditHabitViewController: UIViewController {
         navigationItem.leftBarButtonItem?.tintColor = UIColor.MyTheme.myPurple
     }
     
-    func setUpConstrains() {
+    func setUpConstraints() {
         let constraints = [
             nameHabitLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 21),
             nameHabitLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 16),
@@ -150,7 +150,7 @@ class EditHabitViewController: UIViewController {
             
             nameHabitTextField.topAnchor.constraint(equalTo: nameHabitLabel.bottomAnchor, constant: 7),
             nameHabitTextField.leadingAnchor.constraint(equalTo: nameHabitLabel.leadingAnchor),
-            nameHabitTextField.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            nameHabitTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             
             colorHabitLabel.topAnchor.constraint(equalTo: nameHabitTextField.bottomAnchor, constant: 15),
             colorHabitLabel.leadingAnchor.constraint(equalTo: nameHabitLabel.leadingAnchor),
@@ -177,7 +177,9 @@ class EditHabitViewController: UIViewController {
             deleteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -18),
             deleteButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             deleteButton.heightAnchor.constraint(equalToConstant: 22),
-            deleteButton.widthAnchor.constraint(equalTo:view.safeAreaLayoutGuide.widthAnchor)
+            deleteButton.widthAnchor.constraint(equalTo:view.safeAreaLayoutGuide.widthAnchor),
+            
+            datePicker.centerXAnchor.constraint(equalTo: additionalViewForDatePicker.centerXAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -195,7 +197,7 @@ class EditHabitViewController: UIViewController {
     }
     
     @objc func deleteTapped() {
-        let vc = UIAlertController(title: "Удалить привычку", message: "Вы хотите удалить привычку\(self.habit?.name ?? "Без названия")", preferredStyle: .alert)
+        let vc = UIAlertController(title: "Удалить привычку", message: "Вы хотите удалить привычку \(self.habit?.name ?? "Без названия")?", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel) {_ in print("Отмена")
         }
         vc.addAction(cancelAction)

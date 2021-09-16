@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DD05CE8E26B2D07C007A187F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CE8D26B2D07C007A187F /* AppDelegate.swift */; };
 		DD05CE9026B2D07C007A187F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CE8F26B2D07C007A187F /* SceneDelegate.swift */; };
-		DD05CE9226B2D07C007A187F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CE9126B2D07C007A187F /* ViewController.swift */; };
 		DD05CE9526B2D07C007A187F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD05CE9326B2D07C007A187F /* Main.storyboard */; };
 		DD05CE9726B2D084007A187F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD05CE9626B2D084007A187F /* Assets.xcassets */; };
 		DD05CE9A26B2D084007A187F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DD05CE9826B2D084007A187F /* LaunchScreen.storyboard */; };
@@ -20,18 +19,17 @@
 		DD05CEB226B85B47007A187F /* ProgressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEB126B85B47007A187F /* ProgressCollectionViewCell.swift */; };
 		DD05CEB426BADD99007A187F /* CreateHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEB326BADD99007A187F /* CreateHabitViewController.swift */; };
 		DD05CEB926BD57BB007A187F /* HabitDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEB826BD57BA007A187F /* HabitDetailsViewController.swift */; };
-		DD05CEBC26C15F67007A187F /* AlphaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEBB26C15F66007A187F /* AlphaButton.swift */; };
-		DD05CEBE26DE6AAD007A187F /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEBD26DE6AAD007A187F /* EditViewController.swift */; };
+		DD05CEBE26DE6AAD007A187F /* EditHabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEBD26DE6AAD007A187F /* EditHabitViewController.swift */; };
 		DD05CEC126E7A937007A187F /* HabitDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD05CEC026E7A936007A187F /* HabitDetailsTableViewCell.swift */; };
-		F3EACF2E26D9614B00A30461 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EACF2D26D9614B00A30461 /* UIColor+Extension.swift */; };
-		F3EACF3026D9640100A30461 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EACF2F26D9640100A30461 /* Common.swift */; };
+		DD54414026F37FA500544E4E /* AlphaButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54413F26F37FA500544E4E /* AlphaButton.swift */; };
+		DD54414426F3803E00544E4E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54414326F3803E00544E4E /* UIColor+Extension.swift */; };
+		DD54414626F381E000544E4E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD54414526F381DF00544E4E /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DD05CE8A26B2D07C007A187F /* MyHabits.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyHabits.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD05CE8D26B2D07C007A187F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD05CE8F26B2D07C007A187F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DD05CE9126B2D07C007A187F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DD05CE9426B2D07C007A187F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DD05CE9626B2D084007A187F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DD05CE9926B2D084007A187F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -43,11 +41,11 @@
 		DD05CEB126B85B47007A187F /* ProgressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCollectionViewCell.swift; sourceTree = "<group>"; };
 		DD05CEB326BADD99007A187F /* CreateHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHabitViewController.swift; sourceTree = "<group>"; };
 		DD05CEB826BD57BA007A187F /* HabitDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsViewController.swift; sourceTree = "<group>"; };
-		DD05CEBB26C15F66007A187F /* AlphaButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlphaButton.swift; sourceTree = "<group>"; };
-		DD05CEBD26DE6AAD007A187F /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		DD05CEBD26DE6AAD007A187F /* EditHabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditHabitViewController.swift; sourceTree = "<group>"; };
 		DD05CEC026E7A936007A187F /* HabitDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitDetailsTableViewCell.swift; sourceTree = "<group>"; };
-		F3EACF2D26D9614B00A30461 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
-		F3EACF2F26D9640100A30461 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		DD54413F26F37FA500544E4E /* AlphaButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlphaButton.swift; sourceTree = "<group>"; };
+		DD54414326F3803E00544E4E /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		DD54414526F381DF00544E4E /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +80,6 @@
 			children = (
 				DD05CE8D26B2D07C007A187F /* AppDelegate.swift */,
 				DD05CE8F26B2D07C007A187F /* SceneDelegate.swift */,
-				DD05CE9126B2D07C007A187F /* ViewController.swift */,
 				DD05CE9326B2D07C007A187F /* Main.storyboard */,
 				DD05CE9626B2D084007A187F /* Assets.xcassets */,
 				DD05CE9826B2D084007A187F /* LaunchScreen.storyboard */,
@@ -111,9 +108,9 @@
 				DD05CEAF26B85B02007A187F /* HabitCollectionViewCell.swift */,
 				DD05CEB126B85B47007A187F /* ProgressCollectionViewCell.swift */,
 				DD05CEAB26B854C8007A187F /* HabitsStore.swift */,
-				DD05CEBB26C15F66007A187F /* AlphaButton.swift */,
-				F3EACF2D26D9614B00A30461 /* UIColor+Extension.swift */,
-				F3EACF2F26D9640100A30461 /* Common.swift */,
+				DD54413F26F37FA500544E4E /* AlphaButton.swift */,
+				DD54414526F381DF00544E4E /* Common.swift */,
+				DD54414326F3803E00544E4E /* UIColor+Extension.swift */,
 			);
 			path = Habits;
 			sourceTree = "<group>";
@@ -138,7 +135,7 @@
 		DD05CEBF26DE6AB6007A187F /* EditHabit */ = {
 			isa = PBXGroup;
 			children = (
-				DD05CEBD26DE6AAD007A187F /* EditViewController.swift */,
+				DD05CEBD26DE6AAD007A187F /* EditHabitViewController.swift */,
 			);
 			path = EditHabit;
 			sourceTree = "<group>";
@@ -213,14 +210,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD05CE9226B2D07C007A187F /* ViewController.swift in Sources */,
-				DD05CEBC26C15F67007A187F /* AlphaButton.swift in Sources */,
-				F3EACF3026D9640100A30461 /* Common.swift in Sources */,
+				DD54414026F37FA500544E4E /* AlphaButton.swift in Sources */,
 				DD05CE8E26B2D07C007A187F /* AppDelegate.swift in Sources */,
-				F3EACF2E26D9614B00A30461 /* UIColor+Extension.swift in Sources */,
 				DD05CEB026B85B02007A187F /* HabitCollectionViewCell.swift in Sources */,
-				DD05CEBE26DE6AAD007A187F /* EditViewController.swift in Sources */,
+				DD05CEBE26DE6AAD007A187F /* EditHabitViewController.swift in Sources */,
+				DD54414426F3803E00544E4E /* UIColor+Extension.swift in Sources */,
 				DD05CEAC26B854C8007A187F /* HabitsStore.swift in Sources */,
+				DD54414626F381E000544E4E /* Common.swift in Sources */,
 				DD05CEC126E7A937007A187F /* HabitDetailsTableViewCell.swift in Sources */,
 				DD05CEB926BD57BB007A187F /* HabitDetailsViewController.swift in Sources */,
 				DD05CEA326B30308007A187F /* InfoViewController.swift in Sources */,

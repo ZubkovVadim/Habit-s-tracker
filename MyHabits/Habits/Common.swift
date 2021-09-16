@@ -1,10 +1,3 @@
-//
-//  Common.swift
-//  MyHabits
-//
-//  Created by Alexander Petrovichev on 27.08.2021.
-//
-
 import UIKit
 
 typealias Function = (() -> Void)

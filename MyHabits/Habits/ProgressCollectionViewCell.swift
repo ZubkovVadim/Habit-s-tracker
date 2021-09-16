@@ -1,9 +1,4 @@
-//
-//  ProgressCollectionViewCell.swift
-//  MyHabits
-//
-//  Created by Vadim on 02.08.2021.
-//
+
 
 import UIKit
 
@@ -26,7 +21,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
     var progressView: UIProgressView = {
         var view = UIProgressView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor.systemGray2
+        view.backgroundColor = UIColor.MyTheme.myWhite
         view.progressTintColor = UIColor.MyTheme.myPurple
         view.layer.cornerRadius = 4
         view.clipsToBounds = true
@@ -53,7 +48,7 @@ class ProgressCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(titleProgressLabel)
         contentView.addSubview(titlePercentLabel)
         [
-//        self.titleProgressLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
+
         self.titleProgressLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
         self.titleProgressLabel.bottomAnchor.constraint(equalTo: progressView.topAnchor, constant: -8),
             

@@ -16,7 +16,6 @@ class HabitDetailsViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setUpTableView()
-        //            setUpConstrains()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -38,7 +37,10 @@ class HabitDetailsViewController: UIViewController {
     }
     
     @objc func editTapped() {
-        let vc = EditHabitViewController()
+        let mainStoryBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        guard let vc = mainStoryBoard.instantiateViewController(withIdentifier: "EditHabitViewController") as? EditHabitViewController else {
+            return
+        }
         vc.habit = habit
         vc.deleteHandler = {
             if let index = HabitsStore.shared.habits.firstIndex(where: { $0 === self.habit}) {
@@ -82,21 +84,7 @@ extension HabitDetailsViewController: UITableViewDataSource {
         let section = allDates.count
         return section
     }
-    
-    //    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    //        let cell = tableView.dequeueReusableCell(withIdentifier: cellIDHabits) as! HabitDetailsTableViewCell
-    //        let date =  HabitsStore.shared.trackDateString(forIndex: allDates.count - 1 - indexPath.item)
-    //        cell.habitDateActivityLabel.text = date
-    //
-    //        if HabitsStore.shared.habit(habit!, isTrackedIn: allDates.first!) == true {
-    //            cell.accessoryType = .checkmark
-    //        }
-    //        return cell
-    //    }
-    //    func numberOfSections(in tableView: UITableView) -> Int {
-    //        return 1
-    //    }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIDHabits, for: indexPath)
