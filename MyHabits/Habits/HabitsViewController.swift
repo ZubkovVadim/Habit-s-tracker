@@ -93,8 +93,10 @@ extension HabitsViewController: UICollectionViewDataSource {
                 collectionView.reloadData()
             }
             cell.habitAquired = {
+                if habit.isAlreadyTakenToday == false {
                 HabitsStore.shared.track(habit)
-            }
+                }
+                }
             return cell
         }
         
